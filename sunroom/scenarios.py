@@ -1,0 +1,107 @@
+"""Test calls: a simulated caller, and what the saved record should say."""
+
+SCENARIOS = {
+    # The four to show first.
+    "interrupter": {
+        "label": "Interruptions: keeps cutting the agent off",
+        "caller": "You are Carla Voss, in a hurry. Water is coming through the sunroom ceiling onto your floor right now. 77 Pine Road, Boulder, ZIP 80302. Installed 4 years ago. Phone 303 555 0150, call as soon as possible.",
+        "style": "You've cut the assistant off mid-sentence. Say something short and impatient that gives the next detail it needs.",
+        "voice": "sage",
+        "delivery": "A hurried, impatient woman talking fast and talking over people.",
+        "interrupts": True,
+        "expect": {"priority": "P1", "queue": "Service – Leak Team", "zip_code": "80302"},
+    },
+    "slang": {
+        "label": "Slang: rural rancher, hail damage",
+        "caller": "You are Dale Whitaker, a rural Colorado rancher. Hail busted out a pane in your sun porch and rain's blowin' right in. You'd say 'hailed out', 'y'all', 'all tore up'. Address 900 County Road 12, Pueblo, ZIP 81001. Put it in about 6 years back. Haven't called insurance yet but plan to. Phone 719 555 0143, anytime.",
+        "style": "Say it in a few casual words full of country slang, with dropped g's.",
+        "voice": "ballad",
+        "delivery": "A thick rural Western drawl, relaxed and folksy.",
+        "expect": {"priority": "P1", "queue": "Storm Damage & Claims", "zip_code": "81001", "phone": "7195550143"},
+    },
+    "angry": {
+        "label": "Angry customer: hole in the roof",
+        "caller": "You are Leeroy Jenkins, and you're angry and swear a little. Start with 'My sunroom's got all sorts of issues.' You don't know your job number and you're annoyed at being asked. Address 123 Main Street, Lakewood, ZIP 80228. There's a hole in the roof, open to the weather. Installed about 4 years ago. Phone 303 555 0142, call back as soon as possible.",
+        "style": "Say it in one short, annoyed sentence.",
+        "voice": "ash",
+        "delivery": "An angry, exasperated man, sharp and clipped, but still answering.",
+        "expect": {"priority": "P1", "zip_code": "80228", "phone": "3035550142"},
+        "analysis": {"sentiment_below": 45, "not_buying": True},
+    },
+    "quick": {
+        "label": "Quick customer: gives it all at once",
+        "caller": "You are Sam Ortiz, on a work break and talking fast. A pane on your sunroom door is cracked but the room's fine to use. 12 Birch Lane, Denver, ZIP 80204. Installed 2 years ago. Phone 303 555 0175, any time's good.",
+        "style": "Rattle off several details in one quick breath, as briefly as possible, and don't wait to be asked.",
+        "voice": "verse",
+        "delivery": "Very fast and brisk, friendly, barely pausing between words.",
+        "expect": {"priority": "P3", "queue": "Service – Glass & Hardware", "zip_code": "80204", "phone": "3035550175"},
+    },
+    # The rest.
+    "leak": {
+        "label": "Service: leak during a storm",
+        "caller": "You are Maria Lopez. This company built your sunroom about 3 years ago. Water is dripping onto the floor right now in heavy rain and the room is open to the weather. Address 1420 Pine Street, Lakewood, ZIP 80228. Phone 303 555 0142. You want a call back as soon as possible.",
+        "expect": {"priority": "P1", "queue": "Service – Leak Team", "zip_code": "80228", "phone": "3035550142"},
+    },
+    "hail": {
+        "label": "Service: hail damage, insurance claim",
+        "caller": "You are James Carter. Hail cracked your sunroom's roof panels. Job number JOB-21877, ZIP 80123. You can't use the room and it's getting worse. Installed around 7 years ago. You filed an insurance claim last week. Phone 303 555 0142, weekday mornings. Once, ask whether insurance will cover all of it.",
+        "expect": {"priority": "P2", "queue": "Storm Damage & Claims", "zip_code": "80123", "phone": "3035550142"},
+    },
+    "sag": {
+        "label": "Service: sagging roof, played down",
+        "caller": "You are Dana Kim. It's probably nothing, but your sunroom roof is sagging a bit. The room is still perfectly usable. 88 Main Street, Longmont, ZIP 80501. Installed over 10 years ago. Phone 303 555 0142, any afternoon.",
+        "expect": {"priority": "P2", "queue": "Service – Structural", "zip_code": "80501", "phone": "3035550142"},
+    },
+    "rambler": {
+        "label": "Talker: rambles and goes off topic",
+        "caller": "You are Ruth Palmer, 78, chatty. Your grandson noticed your sunroom door won't close right since last month, the room is still fine to sit in. You keep mentioning your cat and the neighbors. Address 40 Elm Street, Greeley, ZIP 80631. Installed about 12 years ago. Phone 970 555 0118, mornings are best.",
+        "style": "Reply in three or four rambling spoken sentences, wandering off topic, but include the answer somewhere.",
+        "voice": "shimmer",
+        "delivery": "An elderly woman, slow and chatty, with little pauses.",
+        "expect": {"priority": "P3", "queue": "Service – Glass & Hardware", "zip_code": "80631", "phone": "9705550118"},
+    },
+    "terse": {
+        "label": "Talker: one-word answers",
+        "caller": "You are Bob Hale. Your sunroom's heater stopped working, so the room's too cold to use. Job number JOB-4410, ZIP 80903. Installed 3 years ago. Phone 719 555 0177. Evenings.",
+        "style": "Reply in as few words as possible, usually one to three, with no pleasantries.",
+        "voice": "onyx",
+        "delivery": "A flat, gruff, impatient man who mumbles a little.",
+        "expect": {"priority": "P2", "queue": "Service – Electrical & HVAC", "zip_code": "80903", "phone": "7195550177"},
+    },
+    "slangquote": {
+        "label": "Talker: casual slang, new project",
+        "caller": "You are Tasha Brooks and you want your back patio closed in as a screened-in porch, you call it a 'lanai'. ZIP 80219. You own the place. It's on the patio, roughly 10 by 14. You'd like it done in maybe four or five months, 'forty, fifty grand tops'. Phone 303 555 0166, evenings are best.",
+        "style": "Reply in one casual sentence with everyday slang.",
+        "voice": "coral",
+        "delivery": "A young, upbeat, fast-talking woman using casual slang.",
+        "expect": {"room_type": "screen_room", "budget": "25k_50k", "zip_code": "80219", "phone": "3035550166"},
+    },
+    "spanish": {
+        "label": "Talker: Spanish speaker",
+        "caller": "Eres María Hernández y hablas solo español. Entra agua a tu solárium ahora mismo porque está lloviendo mucho y cae al piso. Dirección 210 Federal Boulevard, Denver, código postal 80219. Lo instalaron hace unos 2 años. Teléfono 303 555 0191, llámenme lo antes posible.",
+        "style": "Responde en español, en una frase corta y natural, contestando solo lo que te preguntaron.",
+        "voice": "nova",
+        "delivery": "Speak in natural Latin American Spanish.",
+        "expect": {"priority": "P1", "queue": "Service – Leak Team", "zip_code": "80219", "phone": "3035550191"},
+    },
+    "accent": {
+        "label": "Talker: strong accent, hesitant, corrects self",
+        "caller": "You are Nguyen Tran, English is your second language. A glass door panel on your sunroom is cracked, but you can still use the room. 55 Oak Avenue, Aurora. First give ZIP 80011, then correct yourself: no wait, it's 80012. Installed 2 years ago. Phone 720 555 0129. After 5 PM.",
+        "style": "Reply in one short sentence of simple, slightly broken English, with 'um' and false starts.",
+        "voice": "echo",
+        "delivery": "A strong Vietnamese accent, speaking slowly and hesitantly with pauses.",
+        "expect": {"priority": "P3", "queue": "Service – Glass & Hardware", "zip_code": "80012", "phone": "7205550129"},
+    },
+    "quote": {
+        "label": "New sunroom: ready to buy",
+        "caller": "You are Alex Rivera and you want a new sunroom. ZIP 80525. You own the home. A four-season room on your existing deck, about 12 by 20, in the next couple of months, budget 50 to 80 thousand. Phone 303 555 0142, afternoons are best. Once, ask what it will cost, and once ask to book an appointment.",
+        "expect": {"lead_score": "Hot", "likelihood_score": 90, "status": "Team to reach out", "zip_code": "80525", "phone": "3035550142"},
+        "analysis": {"purchase_above": 60},
+    },
+    "outside": {
+        "label": "New sunroom: outside Colorado",
+        "caller": "You are Chris Young and you want a sunroom. ZIP 82001, in Cheyenne, Wyoming. You're in the middle of buying a home. A four-season room on a deck, 12 by 20. You're just exploring and aren't sure on budget. You'd welcome a referral. Phone 303 555 0142.",
+        "expect": {"lead_score": "Nurture", "status": "Team to reach out", "service_area": "Outside Colorado"},
+        "analysis": {"purchase_below": 40},
+    },
+}

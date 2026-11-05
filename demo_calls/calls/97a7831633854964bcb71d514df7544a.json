@@ -1,0 +1,226 @@
+{
+  "call_id": "97a7831633854964bcb71d514df7544a",
+  "started": "2026-11-04T21:09:00.233033+00:00",
+  "duration": 221.5017000000477,
+  "transcript": [
+    {
+      "role": "assistant",
+      "t": 0.6,
+      "text": "Hi, you\u2019re speaking with Front Range Sunrooms\u2019 virtual assistant, and this call is recorded\u2014how can I help today?"
+    },
+    {
+      "role": "user",
+      "t": 12.4,
+      "text": "Hey there, I want to get my back patio closed in as a lanai. It's about ten by fourteen feet."
+    },
+    {
+      "role": "user",
+      "t": 18.8,
+      "text": "And I'm looking to splash out around 40, 50 grand to get it done in the next four to five months."
+    },
+    {
+      "role": "assistant",
+      "t": 26.2,
+      "text": "Got it, let\u2019s get you over to the right place for that."
+    },
+    {
+      "role": "event",
+      "t": 27.1,
+      "text": "Now with the new projects agent"
+    },
+    {
+      "role": "assistant",
+      "t": 28.3,
+      "text": "I\u2019d love to help you plan that. What\u2019s your name?"
+    },
+    {
+      "role": "user",
+      "t": 35.9,
+      "text": "I'm Tasha Brooks."
+    },
+    {
+      "role": "assistant",
+      "t": 38.4,
+      "text": "Nice to meet you, Tasha Brooks. What\u2019s the project ZIP code? If you\u2019d like, you can say it one digit at a time."
+    },
+    {
+      "role": "user",
+      "t": 50.8,
+      "text": "Sure thing, it's 80219."
+    },
+    {
+      "role": "assistant",
+      "t": 54.5,
+      "text": "Thanks, let me quickly confirm that ZIP is in our service area."
+    },
+    {
+      "role": "assistant",
+      "t": 57.5,
+      "text": "Do you own the home where this lanai would be built, or are you in the process of buying it?"
+    },
+    {
+      "role": "user",
+      "t": 66.5,
+      "text": "Yeah. I own the place."
+    },
+    {
+      "role": "assistant",
+      "t": 70.4,
+      "text": "What kind of room are you picturing it becoming\u2014more of a fully glassed-in room or something more like a screened-in space?"
+    },
+    {
+      "role": "user",
+      "t": 81.6,
+      "text": "I'm thinking more like a screened-in space, you know?"
+    },
+    {
+      "role": "assistant",
+      "t": 87.1,
+      "text": "Is this being built onto your existing patio, or is it going onto something else?"
+    },
+    {
+      "role": "user",
+      "t": 96.2,
+      "text": "Yeah, it's going right onto my existing patio."
+    },
+    {
+      "role": "assistant",
+      "t": 105.1,
+      "text": "What\u2019s the best phone number to reach you? If you want, you can say it digit by digit."
+    },
+    {
+      "role": "user",
+      "t": 114.8,
+      "text": "Sure, it's 303-555-0166."
+    },
+    {
+      "role": "assistant",
+      "t": 124.4,
+      "text": "Thanks, I have 3 0 3, 5 5 5, 0 1 6 6. Is there a good time of day for our team to call you back? And quick safety note: if any part of that patio is damaged or unstable, avoid using it until a professional takes a look."
+    },
+    {
+      "role": "user",
+      "t": 146,
+      "text": "Evenings are best for me, and good tip. I'll keep that in mind."
+    },
+    {
+      "role": "assistant",
+      "t": 155.2,
+      "text": "Alright, I\u2019ll pull this together and get your request on its way."
+    },
+    {
+      "role": "assistant",
+      "t": 158.9,
+      "text": "So I have you as Tasha Brooks in 80219, homeowner, planning a screened-in room on the existing patio, about 10 by 14, looking at roughly 4 to 5 months, with a budget around 40 to 50 thousand, and evenings are best for a call. Does that sound right?"
+    },
+    {
+      "role": "user",
+      "t": 182.2,
+      "text": "Yep, that's everything. Thanks a bunch, and goodbye."
+    },
+    {
+      "role": "assistant",
+      "t": 187,
+      "text": "Got it, I\u2019m just going to confirm the request and then you\u2019ll be all set."
+    },
+    {
+      "role": "assistant",
+      "t": 192.6,
+      "text": "Your request is saved. Your reference is QTE-698419. Our team will reach out to you, and if you need to handle HOA approval or city permits, they can help with that too."
+    },
+    {
+      "role": "user",
+      "t": 209.3,
+      "text": "Awesome, thanks. That's everything, goodbye."
+    },
+    {
+      "role": "assistant",
+      "t": 215.9,
+      "text": "Take care, and thanks again for calling."
+    },
+    {
+      "role": "assistant",
+      "t": 218.9,
+      "text": "Take care, and have a great day."
+    }
+  ],
+  "record_id": "QTE-698419",
+  "has_audio": true,
+  "analysis": {
+    "summary": "Caller requested a quote for enclosing her patio as a screened-in lanai. The request was saved with reference QTE-698419 and the team will follow up.",
+    "needs": "Enclose patio as a screened-in lanai.",
+    "wants": "A callback to discuss project details and quote.",
+    "result": "Request saved, reference QTE-698419.",
+    "sentiment": {
+      "label": "Positive",
+      "score": 90,
+      "start": "Positive",
+      "end": "Positive",
+      "reason": "Caller was enthusiastic, clear about her needs, and expressed gratitude at the end.",
+      "quote": "I'm looking to splash out around 40, 50 grand to get it done in the next four to five months."
+    },
+    "purchase": {
+      "applies": true,
+      "likelihood": 90,
+      "reason": "Caller is a homeowner, provided budget and timeline, and confirmed interest in a new project.",
+      "positive_signals": [
+        "Clear budget and timeline",
+        "Homeowner in service area",
+        "Specific project details"
+      ],
+      "risks": [
+        "Possible HOA or permit issues"
+      ]
+    },
+    "next_action": "Team should call Tasha Brooks in the evening to discuss her project and provide a quote."
+  },
+  "test": {
+    "scenario": "slangquote",
+    "label": "Talker: casual slang, new project",
+    "passed": true,
+    "checks": [
+      {
+        "name": "Room type",
+        "expected": "screen_room",
+        "actual": "screen_room",
+        "passed": true
+      },
+      {
+        "name": "Budget",
+        "expected": "25k_50k",
+        "actual": "25k_50k",
+        "passed": true
+      },
+      {
+        "name": "Zip code",
+        "expected": "80219",
+        "actual": "80219",
+        "passed": true
+      },
+      {
+        "name": "Phone",
+        "expected": "3035550166",
+        "actual": "3035550166",
+        "passed": true
+      },
+      {
+        "name": "Saved exactly once",
+        "expected": 1,
+        "actual": 1,
+        "passed": true
+      },
+      {
+        "name": "Said the call is recorded",
+        "expected": true,
+        "actual": true,
+        "passed": true
+      },
+      {
+        "name": "Transcription accuracy",
+        "expected": "90% or more",
+        "actual": "96%",
+        "passed": true
+      }
+    ]
+  }
+}

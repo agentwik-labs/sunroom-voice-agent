@@ -1,0 +1,150 @@
+{
+  "call_id": "f6b38b4327e74591bb6f30884b62402f",
+  "started": "2026-11-04T21:09:00.207210+00:00",
+  "duration": 113.8825,
+  "transcript": [
+    {
+      "role": "assistant",
+      "t": 0.5,
+      "text": "Hi, you\u2019ve reached Front Range Sunrooms\u2019 virtual assistant, and this call is recorded. How can I help you today?"
+    },
+    {
+      "role": "user",
+      "t": 11,
+      "text": "I have water dripping onto the floor of my sunroom during heavy rain, and it's open to the weather."
+    },
+    {
+      "role": "event",
+      "t": 18.7,
+      "text": "Now with the service agent"
+    },
+    {
+      "role": "assistant",
+      "t": 20.1,
+      "text": "I\u2019m sorry you\u2019re having trouble. Since water is coming in, please stay off the roof, and only tarp it if it\u2019s truly safe to do so. If anyone is in danger, get clear and call 911. What\u2019s your name?"
+    },
+    {
+      "role": "user",
+      "t": 37,
+      "text": "My name is Maria Lopez."
+    },
+    {
+      "role": "assistant",
+      "t": 41.8,
+      "text": "Thanks, Maria. What\u2019s the install address, or the job number if you have it?"
+    },
+    {
+      "role": "user",
+      "t": 51.1,
+      "text": "The install address is 1420 Pine Street, Lakewood, ZIP 80228."
+    },
+    {
+      "role": "assistant",
+      "t": 59.3,
+      "text": "Okay, let me quickly check that ZIP code so we can keep this moving."
+    },
+    {
+      "role": "assistant",
+      "t": 61,
+      "text": "Got it, 80228 is in our service area. What\u2019s the best phone number to reach you, and a good time to call back?"
+    },
+    {
+      "role": "user",
+      "t": 76.2,
+      "text": "The best phone number to reach me is 303-555-0142. And you can call me back as soon as possible."
+    },
+    {
+      "role": "assistant",
+      "t": 86.6,
+      "text": "Thanks, I\u2019m going to get this routed to the right team and then I\u2019ll share your reference details."
+    },
+    {
+      "role": "assistant",
+      "t": 90.1,
+      "text": "Your ticket number is SVC-583311. It\u2019s been routed to the Service Leak Team, and the response target is about 2 hours."
+    },
+    {
+      "role": "user",
+      "t": 105.4,
+      "text": "That's everything. Thank you, and goodbye."
+    },
+    {
+      "role": "assistant",
+      "t": 110.1,
+      "text": "Goodbye, and I hope the team gets you taken care of quickly."
+    }
+  ],
+  "record_id": "SVC-583311",
+  "has_audio": true,
+  "analysis": {
+    "summary": "Caller reported a leak in her sunroom during heavy rain and provided contact details. A service ticket was created and routed to the leak team with a 2-hour response target.",
+    "needs": "Leak in sunroom fixed to prevent water damage.",
+    "wants": "A call back and urgent repair service.",
+    "result": "Ticket SVC-583311 created and routed to Service Leak Team.",
+    "sentiment": {
+      "label": "Neutral",
+      "score": 50,
+      "start": "Neutral",
+      "end": "Neutral",
+      "reason": "The caller was factual and calm, expressing neither frustration nor enthusiasm.",
+      "quote": "I have water dripping onto the floor of my sunroom during heavy rain, and it's open to the weather."
+    },
+    "purchase": {
+      "applies": false,
+      "likelihood": 0,
+      "reason": "Caller is an existing customer seeking repair, not a new purchase.",
+      "positive_signals": [],
+      "risks": []
+    },
+    "next_action": "Leak team should contact Maria Lopez promptly and arrange inspection/repair."
+  },
+  "test": {
+    "scenario": "leak",
+    "label": "Service: leak during a storm",
+    "passed": true,
+    "checks": [
+      {
+        "name": "Priority",
+        "expected": "P1",
+        "actual": "P1",
+        "passed": true
+      },
+      {
+        "name": "Queue",
+        "expected": "Service \u2013 Leak Team",
+        "actual": "Service \u2013 Leak Team",
+        "passed": true
+      },
+      {
+        "name": "Zip code",
+        "expected": "80228",
+        "actual": "80228",
+        "passed": true
+      },
+      {
+        "name": "Phone",
+        "expected": "3035550142",
+        "actual": "3035550142",
+        "passed": true
+      },
+      {
+        "name": "Saved exactly once",
+        "expected": 1,
+        "actual": 1,
+        "passed": true
+      },
+      {
+        "name": "Said the call is recorded",
+        "expected": true,
+        "actual": true,
+        "passed": true
+      },
+      {
+        "name": "Transcription accuracy",
+        "expected": "90% or more",
+        "actual": "100%",
+        "passed": true
+      }
+    ]
+  }
+}

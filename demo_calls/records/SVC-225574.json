@@ -1,0 +1,27 @@
+{
+  "contact_name": "Sam Ortiz",
+  "phone": "3035550175",
+  "email": "",
+  "job_number_or_address": "12 Birch Lane, Denver",
+  "zip_code": "80204",
+  "install_age": "1-5 years",
+  "category": "glass_window_door",
+  "summary": "Cracked pane on sunroom door needs inspection and repair.",
+  "details": "Caller said, \"Look at that crack.\"",
+  "impact": "usable_needs_fixing",
+  "started": "",
+  "insurance_claim": "",
+  "photos": "",
+  "callback_window": "Anytime",
+  "ticket_id": "SVC-225574",
+  "priority": "P3",
+  "queue": "Service \u2013 Glass & Hardware",
+  "also_notify": [
+    "Warranty Desk"
+  ],
+  "response_target": "2 business days",
+  "warranty": "Likely in warranty",
+  "service_area": "Colorado \u2013 in area",
+  "status": "New",
+  "created": "2026-11-04T21:40:44.411853+00:00"
+}

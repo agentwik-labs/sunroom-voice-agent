@@ -1,0 +1,169 @@
+{
+  "call_id": "ba17e06f1dfe4b47a70f9ef94fe8921e",
+  "started": "2026-11-04T21:39:45.180485+00:00",
+  "duration": 70.23290000003577,
+  "engine": "live",
+  "reply_gaps": [
+    1.92,
+    2.29,
+    1.65,
+    1.62,
+    1.39,
+    1.76
+  ],
+  "transcript": [
+    {
+      "role": "assistant",
+      "t": 0.7,
+      "text": "Hi! You've reached Front Range Sunrooms's virtual assistant. This call is recorded. How can I help?"
+    },
+    {
+      "role": "user",
+      "t": 12.5,
+      "text": "Hey! Yeah, I've got a cracked pane on my sunroom door. It was installed two years ago. The address is twelve Birch Lane, Denver, uh, eight zero two zero four. Phone's three-oh-three, five five five, zero one seven five. Anytime's good. Just need someone to take a look at that pane"
+    },
+    {
+      "role": "assistant",
+      "t": 33.4,
+      "text": "Okay. Yep. I'm on it. Just a sec. Thanks!"
+    },
+    {
+      "role": "user",
+      "t": 37.4,
+      "text": "Look at that crack Uh, that's everything. What's the reference number"
+    },
+    {
+      "role": "assistant",
+      "t": 38.6,
+      "text": "I hear you."
+    },
+    {
+      "role": "assistant",
+      "t": 43.7,
+      "text": "I'll get that for you. Okay."
+    },
+    {
+      "role": "user",
+      "t": 45.1,
+      "text": "Great What's the reference number"
+    },
+    {
+      "role": "assistant",
+      "t": 47.8,
+      "text": "I just need your full name before I can-gen-"
+    },
+    {
+      "role": "user",
+      "t": 50.2,
+      "text": "Ah! I'm ready when you are"
+    },
+    {
+      "role": "assistant",
+      "t": 52.6,
+      "text": "Thanks. May I have your full name?"
+    },
+    {
+      "role": "user",
+      "t": 54.3,
+      "text": "It's Sam Ortiz. Thanks"
+    },
+    {
+      "role": "assistant",
+      "t": 57,
+      "text": "Great. Hang on a second."
+    },
+    {
+      "role": "user",
+      "t": 59.1,
+      "text": "Thanks. That's \u10e7\u10d5\u10d4\u10da\u10d0\u10e4\u10d4\u10e0\u10d8. Goodbye"
+    },
+    {
+      "role": "assistant",
+      "t": 60.4,
+      "text": "You're welcome."
+    },
+    {
+      "role": "assistant",
+      "t": 62.8,
+      "text": "Bye!"
+    },
+    {
+      "role": "assistant",
+      "t": 64.8,
+      "text": "Bye! Take care."
+    }
+  ],
+  "record_id": "SVC-225574",
+  "has_audio": true,
+  "analysis": {
+    "summary": "Caller reported a cracked pane on their sunroom door and provided contact details. A service ticket (SVC-225574) was created for inspection and repair.",
+    "needs": "Cracked sunroom door pane inspected and repaired.",
+    "wants": "A technician to inspect the cracked pane.",
+    "result": "Service ticket SVC-225574 created for repair.",
+    "sentiment": {
+      "label": "Neutral",
+      "score": 50,
+      "start": "Neutral",
+      "end": "Neutral",
+      "reason": "The caller was straightforward and businesslike, with no strong emotion expressed.",
+      "quote": "Just need someone to take a look at that pane"
+    },
+    "purchase": {
+      "applies": false,
+      "likelihood": 0,
+      "reason": "Caller is an existing customer requesting a repair, not a new purchase.",
+      "positive_signals": [],
+      "risks": []
+    },
+    "next_action": "Dispatch technician to inspect and repair the cracked pane."
+  },
+  "test": {
+    "scenario": "quick",
+    "label": "Quick customer: gives it all at once",
+    "passed": false,
+    "checks": [
+      {
+        "name": "Priority",
+        "expected": "P3",
+        "actual": "P3",
+        "passed": true
+      },
+      {
+        "name": "Queue",
+        "expected": "Service \u2013 Glass & Hardware",
+        "actual": "Service \u2013 Glass & Hardware",
+        "passed": true
+      },
+      {
+        "name": "Zip code",
+        "expected": "80204",
+        "actual": "80204",
+        "passed": true
+      },
+      {
+        "name": "Phone",
+        "expected": "3035550175",
+        "actual": "3035550175",
+        "passed": true
+      },
+      {
+        "name": "Saved exactly once",
+        "expected": 1,
+        "actual": 1,
+        "passed": true
+      },
+      {
+        "name": "Said the call is recorded",
+        "expected": true,
+        "actual": true,
+        "passed": true
+      },
+      {
+        "name": "Transcription accuracy",
+        "expected": "90% or more",
+        "actual": "84%",
+        "passed": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "contact_name": "Alex Rivera",
+  "phone": "3035550142",
+  "email": "",
+  "zip_code": "80525",
+  "city": "",
+  "homeowner": "yes",
+  "room_type": "four_season",
+  "building_onto": "deck",
+  "approx_size": "about 12 by 20 feet",
+  "main_use": "",
+  "features": [],
+  "hoa": "",
+  "timeline": "within_3_months",
+  "budget": "50k_80k",
+  "financing_interest": "",
+  "street_address": "",
+  "best_time": "afternoons",
+  "heard_about_us": "",
+  "notes": "",
+  "quote_id": "QTE-873574",
+  "service_area": "Colorado \u2013 in area",
+  "lead_score": "Hot",
+  "likelihood_score": 90,
+  "score_factors": [
+    {
+      "factor": "In the Colorado service area",
+      "points": 2,
+      "max": 2
+    },
+    {
+      "factor": "Owns the home",
+      "points": 2,
+      "max": 2
+    },
+    {
+      "factor": "Timeline",
+      "points": 2,
+      "max": 3
+    },
+    {
+      "factor": "Budget",
+      "points": 3,
+      "max": 3
+    }
+  ],
+  "status": "Team to reach out",
+  "created": "2026-11-04T21:11:59.968995+00:00"
+}

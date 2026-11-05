@@ -1,0 +1,49 @@
+{
+  "contact_name": "Tasha Brooks",
+  "phone": "3035550166",
+  "email": "",
+  "zip_code": "80219",
+  "city": "",
+  "homeowner": "yes",
+  "room_type": "screen_room",
+  "building_onto": "patio",
+  "approx_size": "about 10 by 14 feet",
+  "main_use": "",
+  "features": [],
+  "hoa": "",
+  "timeline": "3_6_months",
+  "budget": "25k_50k",
+  "financing_interest": "",
+  "street_address": "",
+  "best_time": "evenings",
+  "heard_about_us": "",
+  "notes": "",
+  "quote_id": "QTE-698419",
+  "service_area": "Colorado \u2013 in area",
+  "lead_score": "Warm",
+  "likelihood_score": 70,
+  "score_factors": [
+    {
+      "factor": "In the Colorado service area",
+      "points": 2,
+      "max": 2
+    },
+    {
+      "factor": "Owns the home",
+      "points": 2,
+      "max": 2
+    },
+    {
+      "factor": "Timeline",
+      "points": 1,
+      "max": 3
+    },
+    {
+      "factor": "Budget",
+      "points": 2,
+      "max": 3
+    }
+  ],
+  "status": "Team to reach out",
+  "created": "2026-11-04T21:12:10.693845+00:00"
+}

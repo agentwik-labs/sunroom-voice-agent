@@ -1,0 +1,27 @@
+{
+  "contact_name": "unknown",
+  "phone": "3035550150",
+  "email": "",
+  "job_number_or_address": "77 Pine Road, Boulder",
+  "zip_code": "80302",
+  "install_age": "unknown",
+  "category": "leak",
+  "summary": "Active water leak through the sunroom ceiling.",
+  "details": "",
+  "impact": "safety_or_open_to_weather",
+  "started": "",
+  "insurance_claim": "",
+  "photos": "",
+  "callback_window": "unknown",
+  "ticket_id": "SVC-630085",
+  "priority": "P1",
+  "queue": "Service \u2013 Leak Team",
+  "also_notify": [
+    "On-call service manager"
+  ],
+  "response_target": "2 hours",
+  "warranty": "Unknown \u2013 verify",
+  "service_area": "Colorado \u2013 in area",
+  "status": "New",
+  "created": "2026-11-04T21:10:41.613055+00:00"
+}

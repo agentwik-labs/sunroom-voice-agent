@@ -1,0 +1,49 @@
+{
+  "contact_name": "Chris Young",
+  "phone": "3035550142",
+  "email": "",
+  "zip_code": "82001",
+  "city": "Cheyenne",
+  "homeowner": "buying",
+  "room_type": "four_season",
+  "building_onto": "deck",
+  "approx_size": "about 12 by 20",
+  "main_use": "",
+  "features": [],
+  "hoa": "",
+  "timeline": "exploring",
+  "budget": "unsure",
+  "financing_interest": "",
+  "street_address": "",
+  "best_time": "daytime",
+  "heard_about_us": "",
+  "notes": "ZIP is outside Colorado service area; take details for possible referral.",
+  "quote_id": "QTE-287044",
+  "service_area": "Outside Colorado",
+  "lead_score": "Nurture",
+  "likelihood_score": 10,
+  "score_factors": [
+    {
+      "factor": "In the Colorado service area",
+      "points": 0,
+      "max": 2
+    },
+    {
+      "factor": "Owns the home",
+      "points": 1,
+      "max": 2
+    },
+    {
+      "factor": "Timeline",
+      "points": 0,
+      "max": 3
+    },
+    {
+      "factor": "Budget",
+      "points": 0,
+      "max": 3
+    }
+  ],
+  "status": "Team to reach out",
+  "created": "2026-11-04T21:12:00.850024+00:00"
+}

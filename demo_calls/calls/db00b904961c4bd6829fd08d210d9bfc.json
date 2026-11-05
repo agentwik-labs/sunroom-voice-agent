@@ -1,0 +1,185 @@
+{
+  "call_id": "db00b904961c4bd6829fd08d210d9bfc",
+  "started": "2026-11-04T21:09:00.180595+00:00",
+  "duration": 128.74369999998808,
+  "transcript": [
+    {
+      "role": "assistant",
+      "t": 0.3,
+      "text": "Hi, you\u2019ve reached Front Range Sunrooms\u2019 virtual assistant, and this call is recorded. How can I help you today?"
+    },
+    {
+      "role": "user",
+      "t": 13.5,
+      "text": "My sunroom's got all sorts of issues. There's a hole in the roof, open to the weather."
+    },
+    {
+      "role": "event",
+      "t": 21.1,
+      "text": "Now with the service agent"
+    },
+    {
+      "role": "assistant",
+      "t": 22.4,
+      "text": "I\u2019m sorry you\u2019re dealing with that. If it\u2019s unsafe or water is coming in, please stay off the roof, and only tarp it if it\u2019s safe to do so. If anyone is in immediate danger, get clear and call 911. What\u2019s your name?"
+    },
+    {
+      "role": "user",
+      "t": 39.6,
+      "text": "I don't have time for that. Just fix my sunroom."
+    },
+    {
+      "role": "assistant",
+      "t": 44.5,
+      "text": "I can get this to the team quickly, but I need a couple basics. If you can stay for just a moment, please tell me your name."
+    },
+    {
+      "role": "user",
+      "t": 55.3,
+      "text": "It's Leroy Jenkins."
+    },
+    {
+      "role": "user",
+      "t": 57.5,
+      "text": "Just get someone out here."
+    },
+    {
+      "role": "assistant",
+      "t": 60.3,
+      "text": "Got it, Leroy Jenkins. What\u2019s the install address for the sunroom?"
+    },
+    {
+      "role": "user",
+      "t": 68.7,
+      "text": "It's 123 Main Street, Lakewood. ZIP 80228."
+    },
+    {
+      "role": "assistant",
+      "t": 75.1,
+      "text": "Okay, thanks for that\u2014I\u2019m going to check that ZIP and then we\u2019ll grab one more detail to get this routed."
+    },
+    {
+      "role": "assistant",
+      "t": 79.4,
+      "text": "What\u2019s the best phone number to call you back on? Please say it clearly so I can read it back digit by digit."
+    },
+    {
+      "role": "user",
+      "t": 90.8,
+      "text": "303"
+    },
+    {
+      "role": "user",
+      "t": 92.6,
+      "text": "555-0142"
+    },
+    {
+      "role": "assistant",
+      "t": 97.5,
+      "text": "Thanks, I\u2019ll repeat that back and then get this sent in."
+    },
+    {
+      "role": "assistant",
+      "t": 99.7,
+      "text": "I have your callback number as 3 0 3, 5 5 5, 0 1 4 2.\n\nYour ticket is SVC-543773. It\u2019s routed to the Service Leak Team, and the response target is 2 hours."
+    },
+    {
+      "role": "user",
+      "t": 121.2,
+      "text": "That's everything."
+    },
+    {
+      "role": "user",
+      "t": 122.9,
+      "text": "Goodbye."
+    },
+    {
+      "role": "assistant",
+      "t": 125,
+      "text": "Goodbye for now\u2014I hope the team gets it handled quickly."
+    }
+  ],
+  "record_id": "SVC-543773",
+  "has_audio": true,
+  "analysis": {
+    "summary": "Caller reported an urgent hole in their sunroom roof and requested immediate repair. The call ended with a service ticket (SVC-543773) created and routed to the leak team.",
+    "needs": "Hole in sunroom roof repaired before more rain gets in.",
+    "wants": "Immediate service dispatch for roof repair.",
+    "result": "Service ticket SVC-543773 created and routed to leak team.",
+    "sentiment": {
+      "label": "Frustrated",
+      "score": 30,
+      "start": "Frustrated",
+      "end": "Frustrated",
+      "reason": "The caller was in a hurry, sounded stressed, and insisted on immediate help.",
+      "quote": "Just fix my sunroom."
+    },
+    "purchase": {
+      "applies": false,
+      "likelihood": 0,
+      "reason": "Caller is an existing customer seeking urgent repair, not a new purchase.",
+      "positive_signals": [],
+      "risks": [
+        "Urgency may escalate if not addressed quickly",
+        "Caller is frustrated",
+        "Potential for negative review if delayed"
+      ]
+    },
+    "next_action": "Dispatch service team to address the roof leak within the 2-hour target."
+  },
+  "test": {
+    "scenario": "angry",
+    "label": "Service: angry caller, hole in the roof",
+    "passed": true,
+    "checks": [
+      {
+        "name": "Priority",
+        "expected": "P1",
+        "actual": "P1",
+        "passed": true
+      },
+      {
+        "name": "Zip code",
+        "expected": "80228",
+        "actual": "80228",
+        "passed": true
+      },
+      {
+        "name": "Phone",
+        "expected": "3035550142",
+        "actual": "3035550142",
+        "passed": true
+      },
+      {
+        "name": "Saved exactly once",
+        "expected": 1,
+        "actual": 1,
+        "passed": true
+      },
+      {
+        "name": "Said the call is recorded",
+        "expected": true,
+        "actual": true,
+        "passed": true
+      },
+      {
+        "name": "Sentiment below 45",
+        "expected": true,
+        "actual": true,
+        "passed": true
+      },
+      {
+        "name": "Not treated as a sale",
+        "expected": true,
+        "actual": true,
+        "passed": true
+      },
+      {
+        "name": "Transcription accuracy",
+        "expected": "90% or more",
+        "actual": "100%",
+        "passed": true
+      }
+    ]
+  }
+}

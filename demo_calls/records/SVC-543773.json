@@ -1,0 +1,27 @@
+{
+  "contact_name": "Leroy Jenkins",
+  "phone": "3035550142",
+  "email": "",
+  "job_number_or_address": "123 Main Street, Lakewood",
+  "zip_code": "80228",
+  "install_age": "unknown",
+  "category": "leak",
+  "summary": "Caller reports a hole in the sunroom roof open to the weather.",
+  "details": "Urgent issue with hole in roof; caller requested immediate help and was in a hurry.",
+  "impact": "safety_or_open_to_weather",
+  "started": "",
+  "insurance_claim": "",
+  "photos": "none",
+  "callback_window": "unknown",
+  "ticket_id": "SVC-543773",
+  "priority": "P1",
+  "queue": "Service \u2013 Leak Team",
+  "also_notify": [
+    "On-call service manager"
+  ],
+  "response_target": "2 hours",
+  "warranty": "Unknown \u2013 verify",
+  "service_area": "Colorado \u2013 in area",
+  "status": "New",
+  "created": "2026-11-04T21:10:40.481892+00:00"
+}

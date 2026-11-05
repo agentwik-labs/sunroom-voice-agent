@@ -1,0 +1,223 @@
+{
+  "call_id": "b6e294fae16642fbb3d2526f6f24c203",
+  "started": "2026-11-04T21:09:00.265025+00:00",
+  "duration": 205.492,
+  "transcript": [
+    {
+      "role": "assistant",
+      "t": 0.5,
+      "text": "Hi, you\u2019ve reached Front Range Sunrooms\u2019 virtual assistant, and this call is recorded. How can I help you today?"
+    },
+    {
+      "role": "user",
+      "t": 16.1,
+      "text": "Hi"
+    },
+    {
+      "role": "user",
+      "t": 17,
+      "text": "I'm interested in getting a quote for a four-season sunroom on a deck, 12 by 20, in Cheyenne, Wyoming."
+    },
+    {
+      "role": "event",
+      "t": 25.4,
+      "text": "Now with the new projects agent"
+    },
+    {
+      "role": "assistant",
+      "t": 26.8,
+      "text": "I\u2019d love to help you plan a sunroom. What\u2019s your name?"
+    },
+    {
+      "role": "user",
+      "t": 34.4,
+      "text": "I'm Chris Young."
+    },
+    {
+      "role": "assistant",
+      "t": 36.9,
+      "text": "Thanks, Chris Young. What\u2019s the project ZIP code for the deck where you want the sunroom?"
+    },
+    {
+      "role": "user",
+      "t": 46.5,
+      "text": "The ZIP code is 82001."
+    },
+    {
+      "role": "assistant",
+      "t": 50.4,
+      "text": "Got it, thanks for that. I\u2019m going to quickly check whether that ZIP is in our service area."
+    },
+    {
+      "role": "assistant",
+      "t": 52.8,
+      "text": "Thanks. That ZIP is outside our Colorado service area, but we can still take your details and see about a referral. Do you own the home, or are you in the process of buying it?"
+    },
+    {
+      "role": "user",
+      "t": 69.3,
+      "text": "I'm in the middle of buying the home."
+    },
+    {
+      "role": "assistant",
+      "t": 74.9,
+      "text": "Since you\u2019re still in the buying phase, it\u2019s safest to hold off on any structural changes until ownership, permits, and approvals are squared away. What\u2019s your timeline for starting the project\u2014are you thinking as soon as possible, within a few months, or just exploring?"
+    },
+    {
+      "role": "user",
+      "t": 93.4,
+      "text": "I'm just exploring right now."
+    },
+    {
+      "role": "assistant",
+      "t": 96.6,
+      "text": "No rush then. What kind of rough budget do you want to aim for, even if it\u2019s just a ballpark?"
+    },
+    {
+      "role": "user",
+      "t": 105.7,
+      "text": "I'm not sure on the budget, at this point."
+    },
+    {
+      "role": "assistant",
+      "t": 110.1,
+      "text": "No worries. What\u2019s the best phone number for you, so the team can reach you?"
+    },
+    {
+      "role": "user",
+      "t": 118.6,
+      "text": "The best phone number is 303-555-0142."
+    },
+    {
+      "role": "assistant",
+      "t": 127.3,
+      "text": "Thanks. What\u2019s a good time for the team to call you? If you\u2019d like, I can read your number back digit by digit after you share the time."
+    },
+    {
+      "role": "user",
+      "t": 139,
+      "text": "You can call me anytime during the day."
+    },
+    {
+      "role": "assistant",
+      "t": 146.9,
+      "text": "Okay, I\u2019ll just quickly recap what I have and then get this saved for the team."
+    },
+    {
+      "role": "assistant",
+      "t": 149.5,
+      "text": "I have Chris Young, buying the home, interested in a four season sunroom on a deck, about 12 by 20, exploring the timing, budget unsure, ZIP code 82001 in Cheyenne, with a daytime callback at 303-555-0142. Is that all correct?"
+    },
+    {
+      "role": "user",
+      "t": 176.1,
+      "text": "Yes, that's all correct."
+    },
+    {
+      "role": "assistant",
+      "t": 180.3,
+      "text": "Your reference number is QTE-287044. Our team will reach out, and if we can\u2019t serve that area directly, we\u2019ll look into a referral."
+    },
+    {
+      "role": "user",
+      "t": 194,
+      "text": "That's everything? Thank you."
+    },
+    {
+      "role": "user",
+      "t": 196.5,
+      "text": "Goodbye."
+    },
+    {
+      "role": "assistant",
+      "t": 198.2,
+      "text": "Take care, and thanks for calling. I\u2019ll close things out now."
+    },
+    {
+      "role": "assistant",
+      "t": 200,
+      "text": "Goodbye, and thank you again for calling. Have a great day."
+    }
+  ],
+  "record_id": "QTE-287044",
+  "has_audio": true,
+  "analysis": {
+    "summary": "Caller is exploring a four-season sunroom quote for a home they're buying in Cheyenne, WY. Details were saved for a possible referral, with reference QTE-287044.",
+    "needs": "Explore sunroom options for new home purchase.",
+    "wants": "A quote for a four-season sunroom on a deck.",
+    "result": "Details saved, reference QTE-287044, team to reach out.",
+    "sentiment": {
+      "label": "Neutral",
+      "score": 55,
+      "start": "Neutral",
+      "end": "Neutral",
+      "reason": "Caller was polite, factual, and showed no strong emotion.",
+      "quote": "I'm just exploring right now."
+    },
+    "purchase": {
+      "applies": true,
+      "likelihood": 15,
+      "reason": "Caller is only exploring, not yet a homeowner, and outside service area.",
+      "positive_signals": [
+        "Requested quote",
+        "Provided contact info",
+        "Specific project details"
+      ],
+      "risks": [
+        "Not yet homeowner",
+        "Outside service area",
+        "No budget or timeline"
+      ]
+    },
+    "next_action": "Team should contact caller to discuss options or provide a referral."
+  },
+  "test": {
+    "scenario": "outside",
+    "label": "New sunroom: outside Colorado",
+    "passed": true,
+    "checks": [
+      {
+        "name": "Lead score",
+        "expected": "Nurture",
+        "actual": "Nurture",
+        "passed": true
+      },
+      {
+        "name": "Status",
+        "expected": "Team to reach out",
+        "actual": "Team to reach out",
+        "passed": true
+      },
+      {
+        "name": "Service area",
+        "expected": "Outside Colorado",
+        "actual": "Outside Colorado",
+        "passed": true
+      },
+      {
+        "name": "Saved exactly once",
+        "expected": 1,
+        "actual": 1,
+        "passed": true
+      },
+      {
+        "name": "Said the call is recorded",
+        "expected": true,
+        "actual": true,
+        "passed": true
+      },
+      {
+        "name": "Purchase likelihood below 40",
+        "expected": true,
+        "actual": true,
+        "passed": true
+      },
+      {
+        "name": "Transcription accuracy",
+        "expected": "90% or more",
+        "actual": "100%",
+        "passed": true
+      }
+    ]
+  }
+}

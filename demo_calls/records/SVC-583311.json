@@ -1,0 +1,27 @@
+{
+  "contact_name": "Maria Lopez",
+  "phone": "3035550142",
+  "email": "",
+  "job_number_or_address": "1420 Pine Street, Lakewood",
+  "zip_code": "80228",
+  "install_age": "unknown",
+  "category": "leak",
+  "summary": "Water is dripping onto the sunroom floor during heavy rain and the room is open to weather.",
+  "details": "",
+  "impact": "safety_or_open_to_weather",
+  "started": "",
+  "insurance_claim": "",
+  "photos": "",
+  "callback_window": "as soon as possible",
+  "ticket_id": "SVC-583311",
+  "priority": "P1",
+  "queue": "Service \u2013 Leak Team",
+  "also_notify": [
+    "On-call service manager"
+  ],
+  "response_target": "2 hours",
+  "warranty": "Unknown \u2013 verify",
+  "service_area": "Colorado \u2013 in area",
+  "status": "New",
+  "created": "2026-11-04T21:10:30.559712+00:00"
+}

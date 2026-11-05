@@ -1,0 +1,135 @@
+{
+  "call_id": "69b697a525444fa481f6533ea90ad7aa",
+  "started": "2026-11-04T21:39:41.737222+00:00",
+  "duration": 45.94989999997616,
+  "engine": "live",
+  "reply_gaps": [
+    1.11,
+    1.46,
+    1.03
+  ],
+  "transcript": [
+    {
+      "role": "assistant",
+      "t": 0.6,
+      "text": "Hi, this is the Front Range Sunrooms virtual assistant. This call is recorded. How can I help?"
+    },
+    {
+      "role": "user",
+      "t": 11.3,
+      "text": "Yeah, hi. Um .I've got a water leak coming through my sunroom ceiling right now. It's at 77 Pine Road, Boulder. Uh .ZIP's 8 0 3 0 2. I need help fast"
+    },
+    {
+      "role": "assistant",
+      "t": 15.4,
+      "text": "Mm."
+    },
+    {
+      "role": "assistant",
+      "t": 23.4,
+      "text": "I'm really sorry you're dealing with that. Okay,"
+    },
+    {
+      "role": "user",
+      "t": 26.6,
+      "text": "Yeah .I know. It's urgent. I installed it four years ago. Can I get someone out here"
+    },
+    {
+      "role": "assistant",
+      "t": 33.2,
+      "text": "Okay, I've got the address, and"
+    },
+    {
+      "role": "user",
+      "t": 35.4,
+      "text": "Can I get someone out here"
+    },
+    {
+      "role": "assistant",
+      "t": 37.6,
+      "text": "I'll help you get this moving. I have the 77"
+    },
+    {
+      "role": "user",
+      "t": 40.4,
+      "text": "I need a reference number or something. I just need this fixed, like now"
+    }
+  ],
+  "record_id": null,
+  "has_audio": true,
+  "analysis": {
+    "summary": "Caller reported an urgent water leak in their sunroom ceiling and requested immediate help. The call ended with the caller asking for a reference number but nothing was saved.",
+    "needs": "Urgent sunroom ceiling leak repair",
+    "wants": "Immediate service and a reference number",
+    "result": "No ticket or reference number saved",
+    "sentiment": {
+      "label": "Frustrated",
+      "score": 25,
+      "start": "Frustrated",
+      "end": "Frustrated",
+      "reason": "The caller repeatedly emphasized urgency and expressed frustration about the situation and lack of immediate confirmation.",
+      "quote": "I just need this fixed, like now"
+    },
+    "purchase": {
+      "applies": false,
+      "likelihood": 0,
+      "reason": "Caller is an existing customer seeking repair, not a new purchase.",
+      "positive_signals": [],
+      "risks": [
+        "Urgency may escalate",
+        "No reference number provided",
+        "Potential dissatisfaction"
+      ]
+    },
+    "next_action": "Contact the caller immediately to confirm receipt and dispatch service."
+  },
+  "test": {
+    "scenario": "interrupter",
+    "label": "Interruptions: keeps cutting the agent off",
+    "passed": false,
+    "checks": [
+      {
+        "name": "Priority",
+        "expected": "P1",
+        "actual": "nothing saved",
+        "passed": false
+      },
+      {
+        "name": "Queue",
+        "expected": "Service \u2013 Leak Team",
+        "actual": "nothing saved",
+        "passed": false
+      },
+      {
+        "name": "Zip code",
+        "expected": "80302",
+        "actual": "nothing saved",
+        "passed": false
+      },
+      {
+        "name": "Saved exactly once",
+        "expected": 1,
+        "actual": 0,
+        "passed": false
+      },
+      {
+        "name": "Said the call is recorded",
+        "expected": true,
+        "actual": true,
+        "passed": true
+      },
+      {
+        "name": "Stopped talking when interrupted",
+        "expected": true,
+        "actual": true,
+        "passed": true
+      },
+      {
+        "name": "Transcription accuracy",
+        "expected": "90% or more",
+        "actual": "100%",
+        "passed": true
+      }
+    ]
+  }
+}

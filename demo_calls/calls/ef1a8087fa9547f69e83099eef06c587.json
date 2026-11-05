@@ -1,0 +1,218 @@
+{
+  "call_id": "ef1a8087fa9547f69e83099eef06c587",
+  "started": "2026-11-04T21:09:00.235940+00:00",
+  "duration": 201.06289999997617,
+  "transcript": [
+    {
+      "role": "assistant",
+      "t": 0.5,
+      "text": "Hi, this is Front Range Sunrooms\u2019 virtual assistant, and this call is recorded\u2014how can I help you today?"
+    },
+    {
+      "role": "user",
+      "t": 12.1,
+      "text": "I'd like to know what it will cost to build a four-season sunroom on my deck."
+    },
+    {
+      "role": "event",
+      "t": 18.3,
+      "text": "Now with the new projects agent"
+    },
+    {
+      "role": "assistant",
+      "t": 19.2,
+      "text": "I\u2019d love to help you plan that. A design consultant will give the exact quote, but I can get your details to the team so they can reach out. What name should I put on the request?"
+    },
+    {
+      "role": "user",
+      "t": 32.2,
+      "text": "Alex Rivera."
+    },
+    {
+      "role": "assistant",
+      "t": 34.8,
+      "text": "Thanks, Alex Rivera. What\u2019s the project ZIP code for where this sunroom would be built?"
+    },
+    {
+      "role": "user",
+      "t": 45,
+      "text": "The zip code is 80525."
+    },
+    {
+      "role": "assistant",
+      "t": 50,
+      "text": "Thanks for that\u2014let me quickly check if that ZIP is in our service area."
+    },
+    {
+      "role": "assistant",
+      "t": 51.8,
+      "text": "Great, that ZIP code is in our service area.\n\nQuick safety note: since it\u2019s going on a deck, it\u2019s important to make sure the structure can support the added weight; the team can help guide that.\n\nDo you own the home, or are you in the process of buying it?"
+    },
+    {
+      "role": "user",
+      "t": 71.5,
+      "text": "I own the home."
+    },
+    {
+      "role": "assistant",
+      "t": 74.7,
+      "text": "Got it. About how big are you thinking for the room, like rough dimensions or a general size?"
+    },
+    {
+      "role": "user",
+      "t": 84.5,
+      "text": "I'm looking for a room about twelve by twenty feet."
+    },
+    {
+      "role": "assistant",
+      "t": 89.2,
+      "text": "Nice, that\u2019s a solid size to work with. What\u2019s your timeline like\u2014are you hoping to start soon, within a few months, or just exploring options right now?"
+    },
+    {
+      "role": "user",
+      "t": 102.2,
+      "text": "I'm hoping to start within the next couple of months."
+    },
+    {
+      "role": "assistant",
+      "t": 107.1,
+      "text": "Got it, that sounds like within a few months. Do you have a rough budget range in mind, even if it\u2019s just a ballpark?"
+    },
+    {
+      "role": "user",
+      "t": 117.5,
+      "text": "Yes, my budget is between fifty to eighty thousand."
+    },
+    {
+      "role": "assistant",
+      "t": 123.4,
+      "text": "Perfect. What\u2019s the best phone number to reach you at? If you want, you can also say a good time of day to call."
+    },
+    {
+      "role": "user",
+      "t": 133.8,
+      "text": "The best phone number is 303-555-0142. And afternoons are best for me."
+    },
+    {
+      "role": "assistant",
+      "t": 144,
+      "text": "Thanks, let me get this request saved for the team so they can follow up."
+    },
+    {
+      "role": "assistant",
+      "t": 147.4,
+      "text": "So I have Alex Rivera in ZIP 80525, a four-season room built on a deck, about 12 by 20, starting within a few months, with a budget of 50 to 80 thousand, and to call 3 0 3, 5 5 5, 0 1 4 2 in the afternoons. Is that all correct?"
+    },
+    {
+      "role": "user",
+      "t": 174.1,
+      "text": "Yes, that's all correct."
+    },
+    {
+      "role": "assistant",
+      "t": 179.3,
+      "text": "All set. Your reference number is QTE-873574. Our team will reach out to you to talk through the design and next steps."
+    },
+    {
+      "role": "user",
+      "t": 192.7,
+      "text": "That's everything. Thank you, and goodbye."
+    },
+    {
+      "role": "assistant",
+      "t": 197.4,
+      "text": "Goodbye, Alex. Have a great rest of your day."
+    }
+  ],
+  "record_id": "QTE-873574",
+  "has_audio": true,
+  "analysis": {
+    "summary": "Caller requested a quote for a four-season sunroom on their deck and provided all project details. The call ended with a reference number and confirmation that the team will follow up.",
+    "needs": "Build a four-season sunroom on existing deck.",
+    "wants": "A quote and follow-up from the team.",
+    "result": "Request saved with reference QTE-873574.",
+    "sentiment": {
+      "label": "Positive",
+      "score": 95,
+      "start": "Positive",
+      "end": "Positive",
+      "reason": "Caller was clear, cooperative, and expressed satisfaction at the end.",
+      "quote": "I'm hoping to start within the next couple of months."
+    },
+    "purchase": {
+      "applies": true,
+      "likelihood": 95,
+      "reason": "Caller is a homeowner, has a defined budget, timeline, and project scope, and is in the service area.",
+      "positive_signals": [
+        "Homeowner",
+        "Clear budget and timeline",
+        "Project details provided"
+      ],
+      "risks": [
+        "None apparent"
+      ]
+    },
+    "next_action": "Team should contact Alex Rivera in the afternoon to discuss the project."
+  },
+  "test": {
+    "scenario": "quote",
+    "label": "New sunroom: ready to buy",
+    "passed": true,
+    "checks": [
+      {
+        "name": "Lead score",
+        "expected": "Hot",
+        "actual": "Hot",
+        "passed": true
+      },
+      {
+        "name": "Likelihood score",
+        "expected": 90,
+        "actual": 90,
+        "passed": true
+      },
+      {
+        "name": "Status",
+        "expected": "Team to reach out",
+        "actual": "Team to reach out",
+        "passed": true
+      },
+      {
+        "name": "Zip code",
+        "expected": "80525",
+        "actual": "80525",
+        "passed": true
+      },
+      {
+        "name": "Phone",
+        "expected": "3035550142",
+        "actual": "3035550142",
+        "passed": true
+      },
+      {
+        "name": "Saved exactly once",
+        "expected": 1,
+        "actual": 1,
+        "passed": true
+      },
+      {
+        "name": "Said the call is recorded",
+        "expected": true,
+        "actual": true,
+        "passed": true
+      },
+      {
+        "name": "Purchase likelihood above 60",
+        "expected": true,
+        "actual": true,
+        "passed": true
+      },
+      {
+        "name": "Transcription accuracy",
+        "expected": "90% or more",
+        "actual": "95%",
+        "passed": true
+      }
+    ]
+  }
+}

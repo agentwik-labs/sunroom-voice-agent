@@ -1,0 +1,209 @@
+{
+  "call_id": "f894abe1ed264d4b9dffaf1ff1563b56",
+  "started": "2026-11-04T21:09:00.206406+00:00",
+  "duration": 109.97039999997615,
+  "transcript": [
+    {
+      "role": "assistant",
+      "t": 0.7,
+      "text": "Hi, you\u2019ve reached Front Range Sunrooms\u2019 virtual assistant, and this call is recorded; how can I help today?"
+    },
+    {
+      "role": "user",
+      "t": 12.9,
+      "text": "Water is leaking through my sunroom ceiling right now."
+    },
+    {
+      "role": "user",
+      "t": 17,
+      "text": "I need a reference number to get this fixed."
+    },
+    {
+      "role": "assistant",
+      "t": 20.5,
+      "text": "Okay, let me route this to the right team and then I\u2019ll respond."
+    },
+    {
+      "role": "event",
+      "t": 23.5,
+      "text": "Now with the service agent"
+    },
+    {
+      "role": "user",
+      "t": 23.8,
+      "text": "Just give me the reference number, please."
+    },
+    {
+      "role": "assistant",
+      "t": 30.3,
+      "text": "Please stay off the roof, and only use a tarp if it\u2019s safe to do so.\n\nWhat\u2019s your name?"
+    },
+    {
+      "role": "user",
+      "t": 33.4,
+      "text": "That's everything. Thank you. Goodbye."
+    },
+    {
+      "role": "assistant",
+      "t": 40.4,
+      "text": "Got it, I\u2019ll use what you\u2019ve shared and get this moving for you."
+    },
+    {
+      "role": "user",
+      "t": 42.6,
+      "text": "Goodbye."
+    },
+    {
+      "role": "assistant",
+      "t": 44.1,
+      "text": "Before you go, I just need one quick detail so I can create your reference."
+    },
+    {
+      "role": "user",
+      "t": 47.9,
+      "text": "I really need to go, just give me the reference number."
+    },
+    {
+      "role": "assistant",
+      "t": 56.6,
+      "text": "I can\u2019t create a reference number yet because I\u2019m missing the address and a callback number, and I\u2019m not allowed to guess those. If anything feels unsafe, please get clear of the area and call 911. Otherwise, call back when you can share the installation"
+    },
+    {
+      "role": "user",
+      "t": 59.7,
+      "text": "I don't have time for this. Just get me the reference number."
+    },
+    {
+      "role": "assistant",
+      "t": 64.3,
+      "text": "I hear you, and I\u2019m sorry this is so frustrating. I can\u2019t generate a reference number without the install address and a callback number, because I\u2019m not allowed to make those up.\n\nIf water is coming in, keep people clear of the area, and if anyone\u2019s in immediate danger, call"
+    },
+    {
+      "role": "user",
+      "t": 67.2,
+      "text": "I just need the reference number now."
+    },
+    {
+      "role": "assistant",
+      "t": 72.1,
+      "text": "I can\u2019t issue a reference number with missing contact details, and I\u2019m not allowed to guess. If you can share the install address and a callback number, I can get it created right away. Otherwise, please call back when you have a moment."
+    },
+    {
+      "role": "user",
+      "t": 75.6,
+      "text": "The address is 77 Pine Road, Boulder, ZIP 80302, and my number is 303-555-0150."
+    },
+    {
+      "role": "assistant",
+      "t": 88.3,
+      "text": "Thanks, I\u2019m going to quickly check the service area and set up your ticket with those details."
+    },
+    {
+      "role": "user",
+      "t": 90.6,
+      "text": "That's everything. Goodbye."
+    },
+    {
+      "role": "assistant",
+      "t": 93.9,
+      "text": "I\u2019ll keep this quick and use what you\u2019ve already given so you can get a reference."
+    },
+    {
+      "role": "user",
+      "t": 96.5,
+      "text": "Goodbye"
+    },
+    {
+      "role": "assistant",
+      "t": 101.1,
+      "text": "Ticket SVC-630085 is created and routed to the Service Leak Team. The response target is about 2 hours. If anyone is in immediate danger, get clear and call 911."
+    },
+    {
+      "role": "user",
+      "t": 104.2,
+      "text": "Thank you. That's everything. Goodbye."
+    },
+    {
+      "role": "assistant",
+      "t": 108.9,
+      "text": "Goodbye."
+    }
+  ],
+  "record_id": "SVC-630085",
+  "has_audio": true,
+  "analysis": {
+    "summary": "Caller reported an active water leak in their sunroom and requested a reference number. After providing their address and phone, a service ticket was created and the reference number given.",
+    "needs": "Stop water leak in sunroom ceiling urgently",
+    "wants": "Reference number and service ticket for repair",
+    "result": "Ticket SVC-630085 created and reference number provided",
+    "sentiment": {
+      "label": "Frustrated",
+      "score": 20,
+      "start": "Frustrated",
+      "end": "Neutral",
+      "reason": "Caller was urgent and repeatedly frustrated by the process, but calmed after receiving the reference number.",
+      "quote": "I don't have time for this. Just get me the reference number."
+    },
+    "purchase": {
+      "applies": false,
+      "likelihood": 0,
+      "reason": "Caller is an existing customer seeking urgent repair, not a new purchase.",
+      "positive_signals": [],
+      "risks": [
+        "Existing customer",
+        "Urgent repair need",
+        "Frustration with process"
+      ]
+    },
+    "next_action": "Dispatch service team to address the active leak at 77 Pine Road."
+  },
+  "test": {
+    "scenario": "interrupter",
+    "label": "Talker: keeps interrupting",
+    "passed": true,
+    "checks": [
+      {
+        "name": "Priority",
+        "expected": "P1",
+        "actual": "P1",
+        "passed": true
+      },
+      {
+        "name": "Queue",
+        "expected": "Service \u2013 Leak Team",
+        "actual": "Service \u2013 Leak Team",
+        "passed": true
+      },
+      {
+        "name": "Zip code",
+        "expected": "80302",
+        "actual": "80302",
+        "passed": true
+      },
+      {
+        "name": "Saved exactly once",
+        "expected": 1,
+        "actual": 1,
+        "passed": true
+      },
+      {
+        "name": "Said the call is recorded",
+        "expected": true,
+        "actual": true,
+        "passed": true
+      },
+      {
+        "name": "Stopped talking when interrupted",
+        "expected": true,
+        "actual": true,
+        "passed": true
+      },
+      {
+        "name": "Transcription accuracy",
+        "expected": "90% or more",
+        "actual": "100%",
+        "passed": true
+      }
+    ]
+  }
+}

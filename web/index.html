@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sunroom Voice Agent</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header>
+  <h1>Sunroom Voice Agent</h1>
+  <span id="status" role="status">Connecting…</span>
+</header>
+<main>
+  <section class="card" id="call">
+    <div class="controls">
+      <form id="keyForm" hidden>
+        <label for="keyBox">To make calls, enter your OpenAI API key</label>
+        <div class="keyRow"><input id="keyBox" type="password" placeholder="sk-..." autocomplete="off"><button class="ghost">Use key</button></div>
+        <p class="notice">It stays on this computer, in memory, until the server stops. To keep it, put it in <code>.env</code>.</p>
+      </form>
+      <button id="callBtn">Start call</button>
+      <p id="callState" role="status"></p>
+      <p class="notice">Calls are recorded and saved on this computer.</p>
+      <label class="enginePick">Voice model <select id="enginePick"></select></label>
+      <div class="testrow">
+        <select id="testPick" aria-label="Choose a test call"></select>
+        <button class="ghost" id="testBtn">Run test call</button>
+      </div>
+    </div>
+    <div id="transcript" aria-live="polite">
+      <p class="hint"><b>Press Start call and allow your microphone.</b> Then talk naturally, as if you'd phoned a sunroom company. Try "I'd like a new sunroom" or "My sunroom is leaking".</p>
+    </div>
+    <form id="typeForm" hidden><input id="typeBox" aria-label="Type instead of talking" placeholder="Or type instead…" autocomplete="off"><button class="ghost">Send</button></form>
+  </section>
+  <div id="app"></div>
+</main>
+
+<script src="/app.js"></script>
+</body>
+</html>
