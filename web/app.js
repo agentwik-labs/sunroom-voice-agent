@@ -256,15 +256,18 @@ const PHASE_TEXT = {loading:'Loading…', starting:'Connecting…', connected:'C
 let phase = 'loading', keyNeeded = false;
 
 function setState(text, isError = false){ stateEl.textContent = text; stateEl.className = isError ? 'error' : ''; }
+function renderControls(){
+  document.getElementById('call').dataset.phase = phase;
+  const inCall = phase === 'connected' || phase === 'ending';
+  btn.textContent = inCall ? 'End call' : 'Start call'; btn.classList.toggle('end', inCall);
+  btn.disabled = keyNeeded || phase === 'loading' || phase === 'starting';
+  testBtn.disabled = testPick.disabled = enginePick.disabled = keyNeeded || !(phase === 'idle' || phase === 'saving');
+  typeForm.hidden = !inCall || !!call?.scenario;
+}
 function setPhase(next, text = PHASE_TEXT[next], isError = false){
   phase = next;
-  document.getElementById('call').dataset.phase = next;
-  const inCall = next === 'connected' || next === 'ending';
-  btn.textContent = inCall ? 'End call' : 'Start call'; btn.classList.toggle('end', inCall);
-  btn.disabled = keyNeeded || next === 'loading' || next === 'starting';
-  testBtn.disabled = testPick.disabled = enginePick.disabled = keyNeeded || !(next === 'idle' || next === 'saving');
-  typeForm.hidden = !inCall || !!call?.scenario;
-  if (text != null) setState(text, isError);
+  renderControls();
+  if (text !== undefined) setState(text, isError);
 }
 function elapsed(){ return call?.startedAt ? (performance.now() - call.startedAt) / 1000 : 0; }
 function bubble(id, role, text, pending = false){
@@ -657,7 +660,7 @@ async function runTests(){
 function needKey(needed){
   keyNeeded = needed;
   document.getElementById('keyForm').hidden = !needed;
-  setPhase(phase, null); // re-derive the controls, keep the status text
+  renderControls();
 }
 document.getElementById('keyForm').onsubmit = async ev => {
   ev.preventDefault();
