@@ -21,6 +21,7 @@ class Call:
     scenario: str | None
     data: tools.CallData = field(default_factory=tools.CallData)
     saves: int = 0
+    finished: bool = False  # set by finish_call; a call is saved and analyzed once
     started: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
 
 
@@ -108,6 +109,8 @@ def start_live_call(scenario: str | None, sdp: str) -> dict:
 
 def run_tool(call_id: str, name: str, arguments: str) -> dict:
     call = _get(call_id)
+    if call.finished:
+        return {"output": "The call has already ended."}
     if name not in call.agent.tools:
         return {"output": f"{name} isn't available right now."}
     try:
@@ -143,6 +146,9 @@ def save_recording(call_id: str, audio: bytes) -> None:
 
 def finish_call(call_id: str, transcript: list[dict], duration: float, interruptions: int, spoken: list[str], reply_gaps: list[float]) -> dict:
     call = _get(call_id)
+    if call.finished:
+        raise ValueError("This call has already ended and been saved.")
+    call.finished = True
     saved = call.data.saved_record()
     record = asdict(saved) if saved else None
     meta = {

@@ -243,7 +243,29 @@ const enginePick = document.getElementById('enginePick');
 const MAX_TEST_TURNS = 30;
 let call = null, stopTests = false;
 
+/* The call moves through these phases, in this order; errors drop it back to idle with a message.
+   The current phase is on <section id="call" data-phase>, so styles, tests and scripts can read it.
+     loading    the page is fetching its settings
+     idle       no call; Start call and Run test call are available (unless an API key is still needed)
+     starting   asking for the microphone and connecting
+     connected  talking; the status line shows who is speaking
+     ending     the agent is saying goodbye
+     saving     the call is over; the recording is uploading and the analysis is running */
+const PHASE_TEXT = {loading:'Loading…', starting:'Connecting…', connected:'Connected', ending:'Wrapping up…',
+                    saving:'Saving the recording and analyzing the call…'};
+let phase = 'loading', keyNeeded = false;
+
 function setState(text, isError = false){ stateEl.textContent = text; stateEl.className = isError ? 'error' : ''; }
+function setPhase(next, text = PHASE_TEXT[next], isError = false){
+  phase = next;
+  document.getElementById('call').dataset.phase = next;
+  const inCall = next === 'connected' || next === 'ending';
+  btn.textContent = inCall ? 'End call' : 'Start call'; btn.classList.toggle('end', inCall);
+  btn.disabled = keyNeeded || next === 'loading' || next === 'starting';
+  testBtn.disabled = testPick.disabled = enginePick.disabled = keyNeeded || !(next === 'idle' || next === 'saving');
+  typeForm.hidden = !inCall || !!call?.scenario;
+  if (text != null) setState(text, isError);
+}
 function elapsed(){ return call?.startedAt ? (performance.now() - call.startedAt) / 1000 : 0; }
 function bubble(id, role, text, pending = false){
   let b = id && transcript.querySelector(`[data-id="${CSS.escape(id)}"]`);
@@ -277,11 +299,6 @@ async function postJson(url, body){
   if (!res.ok) throw new Error(data.error || `Request failed (${res.status})`);
   return data;
 }
-function setBusy(inCall){
-  btn.disabled = false; btn.textContent = inCall ? 'End call' : 'Start call'; btn.classList.toggle('end', inCall);
-  testBtn.disabled = testPick.disabled = enginePick.disabled = inCall;
-  typeForm.hidden = !inCall || !!call?.scenario;
-}
 function loudnessMeter(ctx, stream){
   const analyser = ctx.createAnalyser(); analyser.fftSize = 1024;
   ctx.createMediaStreamSource(stream).connect(analyser);
@@ -296,10 +313,10 @@ function iceGathered(pc){
   });
 }
 
+/* Resolves once the call has ended and been saved: true if it connected, false if it never got that far. */
 async function startCall(scenario = null){
   const engine = enginePick.value;
-  btn.disabled = testBtn.disabled = true;
-  setState(scenario ? 'Starting test call…' : 'Asking for your microphone…');
+  setPhase('starting', scenario ? 'Starting test call…' : 'Asking for your microphone…');
   const ctx = new AudioContext();
   await ctx.resume();
   let mic, micDest = null;
@@ -315,9 +332,9 @@ async function startCall(scenario = null){
     try {
       mic = await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true, noiseSuppression:true}});
     } catch {
-      ctx.close(); setBusy(false);
-      setState('Microphone blocked. Allow it from the icon in the address bar, then try again.', true);
-      return;
+      ctx.close();
+      setPhase('idle', 'Microphone blocked. Allow it from the icon in the address bar, then try again.', true);
+      return false;
     }
   }
   try {
@@ -337,7 +354,7 @@ async function startCall(scenario = null){
     const chunks = [];
     const recorder = new MediaRecorder(recDest.stream, {mimeType:'audio/webm;codecs=opus'});
     recorder.ondataavailable = e => { if (e.data.size) chunks.push(e.data); };
-    let finished; const done = new Promise(res => { finished = res; });
+    let finished; const done = new Promise(res => { finished = () => res(true); });
     const offer = await pc.createOffer();
     await pc.setLocalDescription(offer);
     let session, answer;
@@ -356,13 +373,13 @@ async function startCall(scenario = null){
     const micLoudness = scenario ? () => 0 : loudnessMeter(ctx, mic);
     call = {pc, dc, mic, audio, ctx, micDest, recorder, chunks, finished, done, scenario, engine, sessionId: session.session_id,
             agent: session.agent, greeting: session.greeting, turnDetection: session.turn_detection, interrupts: session.interrupts,
-            ending: false, text: {}, turns: 0, responding: false, toolsPending: false, callerTalking: false,
+            text: {}, turns: 0, responding: false, toolsPending: false, callerTalking: false,
             spoken: [], gaps: [], interruptions: 0, agentLoudness: () => agentLoudness(), micLoudness,
             agentTalking: false, agentQuietSince: performance.now(), agentTalkingSince: 0, heardAgent: false,
             callerEndedAt: 0, micWasLoud: false, micQuietSince: 0, liveBubble: {user: 0, assistant: 0}, liveRole: null};
     const started = () => {
       recorder.start(1000); call.startedAt = performance.now();
-      setBusy(true); setState('Connected');
+      setPhase('connected');
       call.ticker = setInterval(tick, 100);
       if (scenario) resetWatchdog();
     };
@@ -393,7 +410,9 @@ async function startCall(scenario = null){
     return done;
   } catch (err) {
     mic.getTracks().forEach(t => t.stop());
-    if (call) { endCall(err.message, true); } else { ctx.close(); setBusy(false); setState(err.message, true); }
+    const c = call;
+    if (c) { endCall(err.message, true); await c.done; } else { ctx.close(); setPhase('idle', err.message, true); }
+    return false;
   }
 }
 
@@ -407,7 +426,8 @@ function endCall(message = 'Call ended. The analysis and recording are on the ri
   });
   call = null;
   c.dc.close(); c.pc.close(); c.mic.getTracks().forEach(t => t.stop()); c.audio.srcObject = null;
-  setBusy(false); setState(isError ? message : 'Saving the recording and analyzing the call…', isError);
+  setPhase('saving');
+  if (isError) setState(message, true);
   saveCall(c, entries, duration, message, isError);
 }
 
@@ -422,9 +442,9 @@ async function saveCall(c, entries, duration, message, isError){
     await postJson('/api/call/finish', {session_id:c.sessionId, transcript:entries, duration, interruptions:c.interruptions, spoken:c.spoken, reply_gaps:c.gaps});
     selectCallId = c.sessionId;
     await poll();
-    if (!call) setState(message, isError);
+    if (!call) setPhase('idle', message, isError);
   } catch (err) {
-    if (!call) setState(`Couldn't save the recording: ${err.message}`, true);
+    if (!call) setPhase('idle', `Couldn't save the recording: ${err.message}`, true);
   } finally {
     c.ctx.close(); c.finished();
   }
@@ -446,7 +466,7 @@ function tick(){
     c.agentTalking = false; c.agentQuietSince = now;
     if (c.overlapSince && now - c.overlapSince < 2500) c.interruptions++;
     c.overlapSince = 0;
-    if (!c.ending && c.engine === 'live') setState('Your turn');
+    if (phase === 'connected' && c.engine === 'live') setState('Your turn');
   }
   if (!c.scenario) { // a real caller: when they stop talking starts the reply timer
     const micLoud = c.micLoudness() > MIC_LOUD;
@@ -455,7 +475,7 @@ function tick(){
     return;
   }
   // test caller
-  if (c.ending || c.callerTalking) return;
+  if (phase === 'ending' || c.callerTalking) return;
   if (c.saidBye && !c.agentTalking && now - Math.max(c.agentQuietSince, c.byeAt) > 3000) return endCall();
   if (c.saidBye) return;
   if (c.interrupts && c.agentTalking && !c.toolsPending && now - c.agentTalkingSince > 1300 && c.cutAt !== c.agentTalkingSince && elapsed() > 8) {
@@ -529,7 +549,7 @@ async function handleToolCalls(calls){
     if (result.end) end = true;
   }
   if (end) {
-    call.ending = true;
+    setPhase('ending');
     call.hangupTimer = setTimeout(() => endCall(), 10000);
     respond(call.agent, 'Say one short, friendly goodbye. Do not ask anything else.');
   } else {
@@ -550,17 +570,17 @@ function handleEvent(e){
     case 'response.output_audio_transcript.delta':
       setState('Agent speaking…'); call.text[e.item_id] = (call.text[e.item_id] || '') + e.delta; bubble(e.item_id, 'assistant', call.text[e.item_id]); break;
     case 'output_audio_buffer.stopped':
-      if (call.ending && call.goodbyeDone) { endCall(); break; }
+      if (phase === 'ending' && call.goodbyeDone) { endCall(); break; }
       if (!call.interruptible) { // the greeting is out, so the caller can now talk over the agent
         call.interruptible = true;
         send({type:'session.update', session:{type:'realtime', audio:{input:{turn_detection:call.turnDetection}}}});
       }
-      setState('Your turn');
+      setState(phase === 'ending' ? PHASE_TEXT.ending : 'Your turn');
       break;
     case 'response.done': {
       call.responding = false;
       const calls = (e.response.output || []).filter(o => o.type === 'function_call' && o.status === 'completed');
-      if (call.ending) call.goodbyeDone = true;
+      if (phase === 'ending') call.goodbyeDone = true;
       if (calls.length) handleToolCalls(calls);
       if (e.response.status === 'failed') setState(e.response.status_details?.error?.message || 'The agent hit an error.', true);
       break;
@@ -590,7 +610,7 @@ async function handleLiveTool(item){
   c.toolsPending = true;
   if (item.name === 'end_call') {
     send({type:'response.item.create', event_id:`tool_result_${item.call_id}`, item:{type:'function_call_output', call_id:item.call_id, output:'Call ending.'}});
-    c.ending = true;
+    setPhase('ending');
     send({type:'session.commentary.append', event_id:'goodbye_1', delegation_id:null, content:'Say one short, friendly goodbye now.'});
     c.hangupTimer = setTimeout(() => endCall(), 6000);
     c.toolsPending = false;
@@ -628,14 +648,16 @@ async function runTests(){
   const ids = testPick.value === 'all' ? [...testPick.options].map(o => o.value).filter(v => v !== 'all') : [testPick.value];
   for (const [i, id] of ids.entries()) {
     if (stopTests) break;
-    await startCall(id);
+    const connected = await startCall(id);
+    if (!connected) break; // the error stays on screen instead of the next test wiping it
     if (ids.length > 1 && !stopTests) setState(`Finished test ${i + 1} of ${ids.length}`);
   }
 }
 
 function needKey(needed){
+  keyNeeded = needed;
   document.getElementById('keyForm').hidden = !needed;
-  btn.disabled = testBtn.disabled = needed;
+  setPhase(phase, null); // re-derive the controls, keep the status text
 }
 document.getElementById('keyForm').onsubmit = async ev => {
   ev.preventDefault();
@@ -647,12 +669,14 @@ document.getElementById('keyForm').onsubmit = async ev => {
   } catch (err) { setState(err.message, true); }
 };
 
+setPhase('loading', '');
 fetch('/api/config').then(r => r.json()).then(({tests, engines, default_engine, has_key}) => {
   testPick.append(...tests.map(t => el('option', {value:t.id}, t.label)), el('option', {value:'all'}, 'All test calls, one after another'));
   enginePick.append(...Object.entries(engines).map(([id, label]) => el('option', {value:id}, label)));
   enginePick.value = default_engine;
   needKey(!has_key);
-});
+  setPhase('idle', '');
+}).catch(() => setPhase('idle', 'Could not load the settings. Is the server running? Refresh to try again.', true));
 testBtn.onclick = runTests;
 btn.onclick = () => { if (call) { stopTests = true; endCall(); } else startCall(); };
 typeForm.onsubmit = ev => {

@@ -38,6 +38,10 @@ Your key stays on your computer: `.env` is ignored by git, and the page never re
 
 [DEMO.md](DEMO.md) has scripts for showing it to people.
 
+The call section carries its phase as `<section id="call" data-phase="…">`: `loading`, `idle`, `starting`, `connected`,
+`ending` or `saving`. Styles, browser tests and scripts that drive the page can wait on it instead of reading the status text.
+The phases and what each one enables are listed at the top of the call code in `web/app.js`.
+
 ### Costs
 
 Calls and test calls use your OpenAI account. GPT-Live costs $0.05 per minute plus the model that saves records, and Realtime is priced by audio tokens. See [OpenAI's pricing](https://openai.com/api/pricing/).

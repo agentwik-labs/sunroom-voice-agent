@@ -56,6 +56,16 @@ class Tools(unittest.TestCase):
         call_id = calls._register("realtime", agents.RECEPTIONIST, None)
         self.assertIn("isn't available", calls.run_tool(call_id, "create_quote_request", "{}")["output"])
 
+    def test_a_call_is_finished_once(self):
+        call_id = calls._register("live", agents.LIVE, None)
+        with tempfile.TemporaryDirectory() as folder, mock.patch.object(storage, "RECORDS_DIR", Path(folder)), \
+                mock.patch.object(calls, "analyze_call", side_effect=ValueError("no key")):
+            meta = calls.finish_call(call_id, [], 1.0, 0, [], [])
+            self.assertEqual(meta["analysis_error"], "no key")
+            with self.assertRaises(ValueError):
+                calls.finish_call(call_id, [], 1.0, 0, [], [])
+        self.assertIn("already ended", calls.run_tool(call_id, "check_service_area", '{"zip_code": "80202"}')["output"])
+
 
 class VoiceModels(unittest.TestCase):
     def test_realtime_tools_leave_out_strict_and_live_tools_keep_it(self):
